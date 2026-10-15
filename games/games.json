@@ -1,0 +1,182 @@
+[
+  {
+    "id": "tetris", "title": "BLOCKS", "kind": "Arcade",
+    "blurb": "Stack falling blocks and clear lines before they reach the top.", "accent": "#4fc3f7", "rows": 22, "cols": 38,
+    "dpad": true, "buttons": [["DROP", "drop"]], "kbd": "click here to use W A S D",
+    "help": ["W rotates, A D move, S drops", "Space = hard drop"],
+    "labels": ["SCORE", "BEST"],
+    "icon": ["##..", ".#..", ".###", "...#", "o.##"]
+  },
+  {
+    "id": "2048", "src": "g2048", "title": "2048", "kind": "Puzzle",
+    "blurb": "Slide and merge numbered tiles to build a 2048.", "accent": "#f2b84b", "rows": 17, "cols": 29,
+    "dpad": true, "buttons": [["NEW GAME", "new"]], "kbd": "click here to use W A S D",
+    "help": ["Equal tiles merge when they touch"],
+    "labels": ["SCORE", "BEST"],
+    "icon": ["##.##", "##.##", ".....", "##.oo", "##.oo"]
+  },
+  {
+    "id": "minesweeper", "title": "MINESWEEPER", "kind": "Puzzle",
+    "blurb": "Clear the field without digging up a mine.", "accent": "#9ccc65", "rows": 12, "cols": 38,
+    "dpad": true, "buttons": [["FLAG MODE", "mode"], ["NEW", "new"]], "kbd": "click here for the keyboard",
+    "help": ["Click squares to dig", "Keys: WASD move, Space dig, F flag"],
+    "labels": ["MINES", "BEST TIME"],
+    "click": [{"g": "m", "row0": 1, "col0": 1, "nx": 12, "ny": 10, "cw": 3, "rh": 1}],
+    "icon": [".#.#.", "..#..", "#ooo#", "..#..", ".#.#."]
+  },
+  {
+    "id": "sokoban", "title": "SOKOBAN", "kind": "Puzzle",
+    "blurb": "Push every crate onto its target in six warehouse levels.", "accent": "#ffb74d", "rows": 12, "cols": 24,
+    "dpad": true, "buttons": [["UNDO", "undo"], ["RESTART", "restart"], ["SKIP LEVEL", "skip"]], "kbd": "click here to use W A S D",
+    "help": ["U undo, R restart, N skip"],
+    "labels": ["MOVES", "LEVEL"],
+    "icon": ["#####", "#o..#", "#.##.", "#..##", "#####"]
+  },
+  {
+    "id": "tron", "title": "LIGHT CYCLES", "kind": "Arcade",
+    "blurb": "Leave a wall of light behind you and box in the CPU.", "accent": "#00e5ff", "rows": 17, "cols": 44,
+    "dpad": true, "buttons": [], "kbd": "click here to use W A S D",
+    "help": ["You can't stop - only turn"],
+    "labels": ["YOU", "CPU"],
+    "icon": ["####.", "...#.", ".o.#.", ".o.##", ".ooo."]
+  },
+  {
+    "id": "breakout", "title": "BREAKOUT", "kind": "Arcade",
+    "blurb": "Bounce the ball off your paddle and smash every brick.", "accent": "#ff5c8a", "rows": 23, "cols": 42,
+    "dpad": true, "buttons": [["LAUNCH", "launch"]], "kbd": "click here to use W A S D",
+    "help": ["A D move the paddle", "W or Space launches"],
+    "labels": ["SCORE", "BEST"],
+    "icon": ["#####", "#####", ".....", "..o..", ".###."]
+  },
+  {
+    "id": "invaders", "title": "INVADERS", "kind": "Arcade",
+    "blurb": "Hold off the descending alien fleet from behind your shields.", "accent": "#76ff03", "rows": 20, "cols": 40,
+    "dpad": true, "buttons": [["FIRE", "fire"]], "kbd": "click here to use W A S D",
+    "help": ["A D move, W or Space fires"],
+    "labels": ["SCORE", "BEST"],
+    "icon": [".#.#.", "#####", "#.#.#", ".....", "..o.."]
+  },
+  {
+    "id": "frogger", "title": "CROSSING", "kind": "Arcade",
+    "blurb": "Hop across the road and river to fill all five homes.", "accent": "#66bb6a", "rows": 12, "cols": 32,
+    "dpad": true, "buttons": [], "kbd": "click here to use W A S D",
+    "help": ["Dodge cars, ride the logs", "Water = splash"],
+    "labels": ["SCORE", "BEST"],
+    "icon": ["#.#..", ".###.", "#.#..", ".....", "oo.oo"]
+  },
+  {
+    "id": "flappy", "title": "FLAPPY", "kind": "Arcade",
+    "blurb": "Tap to flap through the gaps between the pipes.", "accent": "#ffd54f", "rows": 18, "cols": 40,
+    "dpad": false, "buttons": [["FLAP", "flap"]], "kbd": "click here, then tap any key",
+    "help": ["Every tap gives a little lift"],
+    "labels": ["SCORE", "BEST"],
+    "icon": ["##...#", "##...#", "......", ".oo...", "....##"]
+  },
+  {
+    "id": "dino", "title": "DINO RUN", "kind": "Arcade",
+    "blurb": "Jump the cacti and duck the birds in an endless run.", "accent": "#ff8a65", "rows": 9, "cols": 44,
+    "dpad": true, "buttons": [["JUMP", "jump"]], "kbd": "click here to use W A S D",
+    "help": ["W or Space jumps, S ducks"],
+    "labels": ["SCORE", "BEST"],
+    "icon": ["..##.", "..#..", ".##..", ".#..#", "ooooo"]
+  },
+  {
+    "id": "pacman", "title": "MUNCHER", "kind": "Arcade",
+    "blurb": "Eat every dot in the maze while dodging the ghosts.", "accent": "#ffeb3b", "rows": 21, "cols": 38,
+    "dpad": true, "buttons": [], "kbd": "click here to use W A S D",
+    "help": ["() = power pellet: chase the ghosts"],
+    "labels": ["SCORE", "BEST"],
+    "icon": [".###.", "##...", "#....", "##...", ".###."]
+  },
+  {
+    "id": "tictactoe", "title": "TIC-TAC-TOE", "kind": "Board",
+    "blurb": "Three in a row against a CPU that never blunders on hard.", "accent": "#ba68c8", "rows": 17, "cols": 29,
+    "dpad": false, "buttons": [["NEW GAME", "new"], ["EASY/HARD", "level"]], "kbd": "click here to type 1-9",
+    "help": ["Click a square to play", "You and the CPU take turns starting"],
+    "labels": ["YOU", "CPU"],
+    "click": [{"g": "t", "row0": 0, "col0": 0, "nx": 3, "ny": 3, "cw": 9, "rh": 5, "sx": 10, "sy": 6}],
+    "icon": ["#.o.#", ".#o#.", "ooooo", ".#o#.", "#.o.#"]
+  },
+  {
+    "id": "connect4", "title": "CONNECT FOUR", "kind": "Board",
+    "blurb": "Drop pieces and line up four before the CPU does.", "accent": "#ef5350", "rows": 14, "cols": 43,
+    "dpad": false, "buttons": [["NEW GAME", "new"], ["EASY/HARD", "level"]], "kbd": "click here to type 1-7",
+    "help": ["Click any column to drop a piece", "Four in a row wins"],
+    "labels": ["YOU", "CPU"],
+    "click": [{"g": "c", "row0": 0, "col0": 1, "nx": 7, "ny": 1, "cw": 5, "rh": 14, "sx": 6}],
+    "icon": [".....", "...#.", "..#o.", ".#oo.", "#ooo#"]
+  },
+  {
+    "id": "lightsout", "title": "LIGHTS OUT", "kind": "Puzzle",
+    "blurb": "Every click flips a plus shape. Switch all the lights off.", "accent": "#ffee58", "rows": 14, "cols": 39,
+    "dpad": false, "buttons": [["NEW PUZZLE", "new"], ["RESET", "reset"]], "kbd": null,
+    "help": ["Clicking a light flips it", "and its four neighbours"],
+    "labels": ["MOVES", "BEST"],
+    "click": [{"g": "l", "row0": 0, "col0": 0, "nx": 5, "ny": 5, "cw": 7, "rh": 2, "sx": 8, "sy": 3}],
+    "icon": ["#.o.#", ".###.", "o###o", ".###.", "#.o.#"]
+  },
+  {
+    "id": "fifteen", "title": "15 PUZZLE", "kind": "Puzzle",
+    "blurb": "Slide the numbered tiles back into order.", "accent": "#4dd0e1", "rows": 17, "cols": 29,
+    "dpad": true, "buttons": [["SHUFFLE", "new"]], "kbd": "click here to use W A S D",
+    "help": ["Click a tile, or use the arrows"],
+    "labels": ["MOVES", "BEST"],
+    "click": [{"g": "f", "row0": 1, "col0": 1, "nx": 4, "ny": 4, "cw": 6, "rh": 3, "sx": 7, "sy": 4}],
+    "icon": ["##.##", "##.##", ".....", "##.oo", "##.oo"]
+  },
+  {
+    "id": "mastermind", "title": "CODEBREAKER", "kind": "Puzzle",
+    "blurb": "Crack the secret 4-digit code in ten guesses.", "accent": "#f06292", "rows": 14, "cols": 32,
+    "dpad": false, "buttons": [["CHECK", "ok"], ["DELETE", "del"], ["NEW CODE", "new"]], "kbd": "click here to type 1-6",
+    "help": ["Click the numbers at the bottom", "Space checks, - deletes"],
+    "labels": ["TRIES", "BEST"],
+    "click": [{"g": "p", "row0": 13, "col0": 0, "nx": 8, "ny": 1, "cw": 3, "rh": 1, "sx": 4}],
+    "icon": ["#.#.#", ".....", "o.#.o", ".....", "#.o.#"]
+  },
+  {
+    "id": "hangman", "title": "HANGMAN", "kind": "Word",
+    "blurb": "Guess the word one letter at a time before you're hanged.", "accent": "#ffab91", "rows": 12, "cols": 39,
+    "dpad": false, "buttons": [["NEW WORD", "new"]], "kbd": "click here to type letters",
+    "help": ["Click letters to guess", "6 misses and you're out"],
+    "labels": ["STREAK", "BEST"],
+    "click": [{"g": "h", "row0": 10, "col0": 0, "nx": 13, "ny": 2, "cw": 3, "rh": 1}],
+    "icon": ["####.", "#..o.", "#.ooo", "#..o.", "####."]
+  },
+  {
+    "id": "wordle", "title": "WORD GUESS", "kind": "Word",
+    "blurb": "Find the hidden 5-letter word in six tries.", "accent": "#81c784", "rows": 15, "cols": 31,
+    "dpad": false, "buttons": [["ENTER", "enter"], ["DELETE", "del"], ["NEW WORD", "new"]], "kbd": "click here to type letters",
+    "help": ["Six tries at a 5-letter word", "Space = enter, - = delete"],
+    "labels": ["STREAK", "BEST"],
+    "click": [
+      {"g": "k1", "row0": 12, "col0": 0, "nx": 10, "ny": 1, "cw": 3, "rh": 1},
+      {"g": "k2", "row0": 13, "col0": 2, "nx": 9, "ny": 1, "cw": 3, "rh": 1},
+      {"g": "k3", "row0": 14, "col0": 2, "nx": 9, "ny": 1, "cw": 3, "rh": 1}
+    ],
+    "icon": ["#.o.#", ".....", "#.#.o", ".....", "#.#.#"]
+  },
+  {
+    "id": "life", "title": "GAME OF LIFE", "kind": "Puzzle",
+    "blurb": "Draw cells and watch Conway's Game of Life evolve.", "accent": "#69f0ae", "rows": 15, "cols": 40,
+    "dpad": false, "buttons": [["PLAY/PAUSE", "play"], ["STEP", "step"], ["RANDOM", "random"], ["CLEAR", "clear"], ["PATTERN", "pattern"]],
+    "kbd": "click here for shortcuts",
+    "help": ["Space play, N step, R random", "C clear, P next pattern"],
+    "labels": ["GEN", "ALIVE"],
+    "click": [{"g": "c", "row0": 0, "col0": 0, "nx": 20, "ny": 15, "cw": 2, "rh": 1}],
+    "icon": [".#...", "..#..", "###..", ".....", "...oo"]
+  },
+  {
+    "id": "simon", "title": "COPYCAT", "kind": "Puzzle",
+    "blurb": "Watch the pads light up, then repeat the growing pattern.", "accent": "#b388ff", "rows": 14, "cols": 34,
+    "dpad": true, "buttons": [], "kbd": "click here to use W A S D",
+    "help": ["Watch the pads light up,", "then repeat the pattern"],
+    "labels": ["ROUND", "BEST"],
+    "click": [
+      {"g": "up", "row0": 0, "col0": 12, "nx": 1, "ny": 1, "cw": 10, "rh": 4},
+      {"g": "left", "row0": 5, "col0": 0, "nx": 1, "ny": 1, "cw": 10, "rh": 4},
+      {"g": "right", "row0": 5, "col0": 24, "nx": 1, "ny": 1, "cw": 10, "rh": 4},
+      {"g": "down", "row0": 10, "col0": 12, "nx": 1, "ny": 1, "cw": 10, "rh": 4}
+    ],
+    "icon": ["..#..", ".....", "o...o", ".....", "..#.."]
+  }
+]

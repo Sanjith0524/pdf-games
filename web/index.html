@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF Arcade</title>
+<meta name="description" content="21 games that run inside a PDF file. Pick one and play.">
+<style>
+  :root {
+    --bg: #0e0f13; --panel: #171a21; --edge: #2a2f3a; --text: #e8eaf0; --muted: #8a90a0;
+    --brand: #ff6a3d;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--mono); }
+  body::before { content: ""; display: block; height: 4px; background: var(--brand); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 40px 16px 56px; }
+
+  header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; margin-bottom: 28px; }
+  h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); letter-spacing: 0.02em; color: var(--brand); line-height: 1; }
+  .tagline { margin: 10px 0 0; color: var(--muted); font-size: 14px; max-width: 52ch; line-height: 1.5; }
+  .creator { color: var(--brand); font-weight: 700; font-size: 14px; text-underline-offset: 4px; white-space: nowrap; }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+  .filters button {
+    font: inherit; font-size: 13px; color: var(--muted); background: var(--panel);
+    border: 1px solid var(--edge); border-radius: 999px; padding: 7px 14px; cursor: pointer;
+  }
+  .filters button:hover { color: var(--text); }
+  .filters button[aria-pressed="true"] { color: var(--bg); background: var(--text); border-color: var(--text); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+  .card { position: relative; }
+  .card[hidden] { display: none; }
+  .play {
+    display: grid; grid-template-columns: auto 1fr; grid-template-areas: "icon kind" "name name" "blurb blurb" "go go";
+    align-items: start; gap: 10px 12px; height: 100%; padding: 18px; text-decoration: none; color: inherit;
+    background: var(--panel); border: 1.5px solid var(--edge); border-radius: 12px;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .play:hover, .play:focus-visible { border-color: var(--accent); transform: translateY(-2px); outline: none; }
+  .icon { grid-area: icon; height: 36px; width: auto; }
+  .kind { grid-area: kind; justify-self: end; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .name { grid-area: name; font-size: 20px; font-weight: 700; color: var(--accent); }
+  .blurb { grid-area: blurb; font-size: 13px; line-height: 1.5; color: var(--muted); }
+  .go { grid-area: go; align-self: end; font-size: 13px; font-weight: 700; color: var(--accent); }
+  .file {
+    position: absolute; right: 18px; bottom: 18px; font-size: 11px; color: var(--muted);
+    text-decoration: none; border: 1px solid var(--edge); border-radius: 6px; padding: 3px 7px;
+  }
+  .file:hover { color: var(--text); border-color: var(--muted); }
+
+  footer { margin-top: 40px; color: var(--muted); font-size: 13px; line-height: 1.6; max-width: 70ch; }
+  footer strong { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>PDF ARCADE</h1>
+      <p class="tagline">21 games that live inside a PDF file. Pick one and play, or grab the PDF and open it in Chrome, Edge or Firefox.</p>
+    </div>
+    <a class="creator" href="https://sanjith-portfolio-10.vercel.app/">Meet the creator &rarr;</a>
+  </header>
+
+  <ul class="filters" aria-label="Filter games">
+    <li><button type="button" data-kind="All" aria-pressed="true">All</button></li>
+    <li><button type="button" data-kind="Arcade" aria-pressed="false">Arcade</button></li>
+    <li><button type="button" data-kind="Puzzle" aria-pressed="false">Puzzle</button></li>
+    <li><button type="button" data-kind="Board" aria-pressed="false">Board</button></li>
+    <li><button type="button" data-kind="Word" aria-pressed="false">Word</button></li>
+  </ul>
+
+  <ul class="grid">
+    <li class="card" data-kind="Arcade" style="--accent: #ff6a3d">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../snake.pdf#zoom=page-fit" data-pdf="snake.pdf">
+        <svg class="icon" viewBox="0 0 61 25" aria-hidden="true"><rect x="18" y="0" width="7" height="7" fill="#ff6a3d"/><rect x="27" y="0" width="7" height="7" fill="#ff6a3d"/><rect x="36" y="0" width="7" height="7" fill="#ff6a3d"/><rect x="18" y="9" width="7" height="7" fill="#ff6a3d"/><rect x="36" y="9" width="7" height="7" fill="#ff6a3d"/><rect x="0" y="18" width="7" height="7" fill="#ff6a3d"/><rect x="9" y="18" width="7" height="7" fill="#ff6a3d"/><rect x="18" y="18" width="7" height="7" fill="#ff6a3d"/><rect x="54" y="18" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">SNAKE</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">The original. Eat, grow, and don&#x27;t bite your own tail.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="snake.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #4fc3f7">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/tetris.pdf#zoom=page-fit" data-pdf="games/tetris.pdf">
+        <svg class="icon" viewBox="0 0 34 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#4fc3f7"/><rect x="9" y="0" width="7" height="7" fill="#4fc3f7"/><rect x="9" y="9" width="7" height="7" fill="#4fc3f7"/><rect x="9" y="18" width="7" height="7" fill="#4fc3f7"/><rect x="18" y="18" width="7" height="7" fill="#4fc3f7"/><rect x="27" y="18" width="7" height="7" fill="#4fc3f7"/><rect x="27" y="27" width="7" height="7" fill="#4fc3f7"/><rect x="0" y="36" width="7" height="7" fill="var(--text)"/><rect x="18" y="36" width="7" height="7" fill="#4fc3f7"/><rect x="27" y="36" width="7" height="7" fill="#4fc3f7"/></svg>
+        <span class="name">BLOCKS</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Stack falling blocks and clear lines before they reach the top.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/tetris.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #f2b84b">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/2048.pdf#zoom=page-fit" data-pdf="games/2048.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#f2b84b"/><rect x="9" y="0" width="7" height="7" fill="#f2b84b"/><rect x="27" y="0" width="7" height="7" fill="#f2b84b"/><rect x="36" y="0" width="7" height="7" fill="#f2b84b"/><rect x="0" y="9" width="7" height="7" fill="#f2b84b"/><rect x="9" y="9" width="7" height="7" fill="#f2b84b"/><rect x="27" y="9" width="7" height="7" fill="#f2b84b"/><rect x="36" y="9" width="7" height="7" fill="#f2b84b"/><rect x="0" y="27" width="7" height="7" fill="#f2b84b"/><rect x="9" y="27" width="7" height="7" fill="#f2b84b"/><rect x="27" y="27" width="7" height="7" fill="var(--text)"/><rect x="36" y="27" width="7" height="7" fill="var(--text)"/><rect x="0" y="36" width="7" height="7" fill="#f2b84b"/><rect x="9" y="36" width="7" height="7" fill="#f2b84b"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">2048</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Slide and merge numbered tiles to build a 2048.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/2048.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #9ccc65">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/minesweeper.pdf#zoom=page-fit" data-pdf="games/minesweeper.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="9" y="0" width="7" height="7" fill="#9ccc65"/><rect x="27" y="0" width="7" height="7" fill="#9ccc65"/><rect x="18" y="9" width="7" height="7" fill="#9ccc65"/><rect x="0" y="18" width="7" height="7" fill="#9ccc65"/><rect x="9" y="18" width="7" height="7" fill="var(--text)"/><rect x="18" y="18" width="7" height="7" fill="var(--text)"/><rect x="27" y="18" width="7" height="7" fill="var(--text)"/><rect x="36" y="18" width="7" height="7" fill="#9ccc65"/><rect x="18" y="27" width="7" height="7" fill="#9ccc65"/><rect x="9" y="36" width="7" height="7" fill="#9ccc65"/><rect x="27" y="36" width="7" height="7" fill="#9ccc65"/></svg>
+        <span class="name">MINESWEEPER</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Clear the field without digging up a mine.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/minesweeper.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #ffb74d">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/sokoban.pdf#zoom=page-fit" data-pdf="games/sokoban.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#ffb74d"/><rect x="9" y="0" width="7" height="7" fill="#ffb74d"/><rect x="18" y="0" width="7" height="7" fill="#ffb74d"/><rect x="27" y="0" width="7" height="7" fill="#ffb74d"/><rect x="36" y="0" width="7" height="7" fill="#ffb74d"/><rect x="0" y="9" width="7" height="7" fill="#ffb74d"/><rect x="9" y="9" width="7" height="7" fill="var(--text)"/><rect x="36" y="9" width="7" height="7" fill="#ffb74d"/><rect x="0" y="18" width="7" height="7" fill="#ffb74d"/><rect x="18" y="18" width="7" height="7" fill="#ffb74d"/><rect x="27" y="18" width="7" height="7" fill="#ffb74d"/><rect x="0" y="27" width="7" height="7" fill="#ffb74d"/><rect x="27" y="27" width="7" height="7" fill="#ffb74d"/><rect x="36" y="27" width="7" height="7" fill="#ffb74d"/><rect x="0" y="36" width="7" height="7" fill="#ffb74d"/><rect x="9" y="36" width="7" height="7" fill="#ffb74d"/><rect x="18" y="36" width="7" height="7" fill="#ffb74d"/><rect x="27" y="36" width="7" height="7" fill="#ffb74d"/><rect x="36" y="36" width="7" height="7" fill="#ffb74d"/></svg>
+        <span class="name">SOKOBAN</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Push every crate onto its target in six warehouse levels.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/sokoban.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #00e5ff">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/tron.pdf#zoom=page-fit" data-pdf="games/tron.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#00e5ff"/><rect x="9" y="0" width="7" height="7" fill="#00e5ff"/><rect x="18" y="0" width="7" height="7" fill="#00e5ff"/><rect x="27" y="0" width="7" height="7" fill="#00e5ff"/><rect x="27" y="9" width="7" height="7" fill="#00e5ff"/><rect x="9" y="18" width="7" height="7" fill="var(--text)"/><rect x="27" y="18" width="7" height="7" fill="#00e5ff"/><rect x="9" y="27" width="7" height="7" fill="var(--text)"/><rect x="27" y="27" width="7" height="7" fill="#00e5ff"/><rect x="36" y="27" width="7" height="7" fill="#00e5ff"/><rect x="9" y="36" width="7" height="7" fill="var(--text)"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">LIGHT CYCLES</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Leave a wall of light behind you and box in the CPU.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/tron.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #ff5c8a">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/breakout.pdf#zoom=page-fit" data-pdf="games/breakout.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#ff5c8a"/><rect x="9" y="0" width="7" height="7" fill="#ff5c8a"/><rect x="18" y="0" width="7" height="7" fill="#ff5c8a"/><rect x="27" y="0" width="7" height="7" fill="#ff5c8a"/><rect x="36" y="0" width="7" height="7" fill="#ff5c8a"/><rect x="0" y="9" width="7" height="7" fill="#ff5c8a"/><rect x="9" y="9" width="7" height="7" fill="#ff5c8a"/><rect x="18" y="9" width="7" height="7" fill="#ff5c8a"/><rect x="27" y="9" width="7" height="7" fill="#ff5c8a"/><rect x="36" y="9" width="7" height="7" fill="#ff5c8a"/><rect x="18" y="27" width="7" height="7" fill="var(--text)"/><rect x="9" y="36" width="7" height="7" fill="#ff5c8a"/><rect x="18" y="36" width="7" height="7" fill="#ff5c8a"/><rect x="27" y="36" width="7" height="7" fill="#ff5c8a"/></svg>
+        <span class="name">BREAKOUT</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Bounce the ball off your paddle and smash every brick.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/breakout.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #76ff03">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/invaders.pdf#zoom=page-fit" data-pdf="games/invaders.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="9" y="0" width="7" height="7" fill="#76ff03"/><rect x="27" y="0" width="7" height="7" fill="#76ff03"/><rect x="0" y="9" width="7" height="7" fill="#76ff03"/><rect x="9" y="9" width="7" height="7" fill="#76ff03"/><rect x="18" y="9" width="7" height="7" fill="#76ff03"/><rect x="27" y="9" width="7" height="7" fill="#76ff03"/><rect x="36" y="9" width="7" height="7" fill="#76ff03"/><rect x="0" y="18" width="7" height="7" fill="#76ff03"/><rect x="18" y="18" width="7" height="7" fill="#76ff03"/><rect x="36" y="18" width="7" height="7" fill="#76ff03"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">INVADERS</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Hold off the descending alien fleet from behind your shields.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/invaders.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #66bb6a">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/frogger.pdf#zoom=page-fit" data-pdf="games/frogger.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#66bb6a"/><rect x="18" y="0" width="7" height="7" fill="#66bb6a"/><rect x="9" y="9" width="7" height="7" fill="#66bb6a"/><rect x="18" y="9" width="7" height="7" fill="#66bb6a"/><rect x="27" y="9" width="7" height="7" fill="#66bb6a"/><rect x="0" y="18" width="7" height="7" fill="#66bb6a"/><rect x="18" y="18" width="7" height="7" fill="#66bb6a"/><rect x="0" y="36" width="7" height="7" fill="var(--text)"/><rect x="9" y="36" width="7" height="7" fill="var(--text)"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">CROSSING</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Hop across the road and river to fill all five homes.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/frogger.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #ffd54f">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/flappy.pdf#zoom=page-fit" data-pdf="games/flappy.pdf">
+        <svg class="icon" viewBox="0 0 52 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#ffd54f"/><rect x="9" y="0" width="7" height="7" fill="#ffd54f"/><rect x="45" y="0" width="7" height="7" fill="#ffd54f"/><rect x="0" y="9" width="7" height="7" fill="#ffd54f"/><rect x="9" y="9" width="7" height="7" fill="#ffd54f"/><rect x="45" y="9" width="7" height="7" fill="#ffd54f"/><rect x="9" y="27" width="7" height="7" fill="var(--text)"/><rect x="18" y="27" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="#ffd54f"/><rect x="45" y="36" width="7" height="7" fill="#ffd54f"/></svg>
+        <span class="name">FLAPPY</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Tap to flap through the gaps between the pipes.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/flappy.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #ff8a65">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/dino.pdf#zoom=page-fit" data-pdf="games/dino.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="18" y="0" width="7" height="7" fill="#ff8a65"/><rect x="27" y="0" width="7" height="7" fill="#ff8a65"/><rect x="18" y="9" width="7" height="7" fill="#ff8a65"/><rect x="9" y="18" width="7" height="7" fill="#ff8a65"/><rect x="18" y="18" width="7" height="7" fill="#ff8a65"/><rect x="9" y="27" width="7" height="7" fill="#ff8a65"/><rect x="36" y="27" width="7" height="7" fill="#ff8a65"/><rect x="0" y="36" width="7" height="7" fill="var(--text)"/><rect x="9" y="36" width="7" height="7" fill="var(--text)"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">DINO RUN</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Jump the cacti and duck the birds in an endless run.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/dino.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Arcade" style="--accent: #ffeb3b">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/pacman.pdf#zoom=page-fit" data-pdf="games/pacman.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="9" y="0" width="7" height="7" fill="#ffeb3b"/><rect x="18" y="0" width="7" height="7" fill="#ffeb3b"/><rect x="27" y="0" width="7" height="7" fill="#ffeb3b"/><rect x="0" y="9" width="7" height="7" fill="#ffeb3b"/><rect x="9" y="9" width="7" height="7" fill="#ffeb3b"/><rect x="0" y="18" width="7" height="7" fill="#ffeb3b"/><rect x="0" y="27" width="7" height="7" fill="#ffeb3b"/><rect x="9" y="27" width="7" height="7" fill="#ffeb3b"/><rect x="9" y="36" width="7" height="7" fill="#ffeb3b"/><rect x="18" y="36" width="7" height="7" fill="#ffeb3b"/><rect x="27" y="36" width="7" height="7" fill="#ffeb3b"/></svg>
+        <span class="name">MUNCHER</span>
+        <span class="kind">Arcade</span>
+        <span class="blurb">Eat every dot in the maze while dodging the ghosts.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/pacman.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Board" style="--accent: #ba68c8">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/tictactoe.pdf#zoom=page-fit" data-pdf="games/tictactoe.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#ba68c8"/><rect x="18" y="0" width="7" height="7" fill="var(--text)"/><rect x="36" y="0" width="7" height="7" fill="#ba68c8"/><rect x="9" y="9" width="7" height="7" fill="#ba68c8"/><rect x="18" y="9" width="7" height="7" fill="var(--text)"/><rect x="27" y="9" width="7" height="7" fill="#ba68c8"/><rect x="0" y="18" width="7" height="7" fill="var(--text)"/><rect x="9" y="18" width="7" height="7" fill="var(--text)"/><rect x="18" y="18" width="7" height="7" fill="var(--text)"/><rect x="27" y="18" width="7" height="7" fill="var(--text)"/><rect x="36" y="18" width="7" height="7" fill="var(--text)"/><rect x="9" y="27" width="7" height="7" fill="#ba68c8"/><rect x="18" y="27" width="7" height="7" fill="var(--text)"/><rect x="27" y="27" width="7" height="7" fill="#ba68c8"/><rect x="0" y="36" width="7" height="7" fill="#ba68c8"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="#ba68c8"/></svg>
+        <span class="name">TIC-TAC-TOE</span>
+        <span class="kind">Board</span>
+        <span class="blurb">Three in a row against a CPU that never blunders on hard.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/tictactoe.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Board" style="--accent: #ef5350">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/connect4.pdf#zoom=page-fit" data-pdf="games/connect4.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="27" y="9" width="7" height="7" fill="#ef5350"/><rect x="18" y="18" width="7" height="7" fill="#ef5350"/><rect x="27" y="18" width="7" height="7" fill="var(--text)"/><rect x="9" y="27" width="7" height="7" fill="#ef5350"/><rect x="18" y="27" width="7" height="7" fill="var(--text)"/><rect x="27" y="27" width="7" height="7" fill="var(--text)"/><rect x="0" y="36" width="7" height="7" fill="#ef5350"/><rect x="9" y="36" width="7" height="7" fill="var(--text)"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="#ef5350"/></svg>
+        <span class="name">CONNECT FOUR</span>
+        <span class="kind">Board</span>
+        <span class="blurb">Drop pieces and line up four before the CPU does.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/connect4.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #ffee58">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/lightsout.pdf#zoom=page-fit" data-pdf="games/lightsout.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#ffee58"/><rect x="18" y="0" width="7" height="7" fill="var(--text)"/><rect x="36" y="0" width="7" height="7" fill="#ffee58"/><rect x="9" y="9" width="7" height="7" fill="#ffee58"/><rect x="18" y="9" width="7" height="7" fill="#ffee58"/><rect x="27" y="9" width="7" height="7" fill="#ffee58"/><rect x="0" y="18" width="7" height="7" fill="var(--text)"/><rect x="9" y="18" width="7" height="7" fill="#ffee58"/><rect x="18" y="18" width="7" height="7" fill="#ffee58"/><rect x="27" y="18" width="7" height="7" fill="#ffee58"/><rect x="36" y="18" width="7" height="7" fill="var(--text)"/><rect x="9" y="27" width="7" height="7" fill="#ffee58"/><rect x="18" y="27" width="7" height="7" fill="#ffee58"/><rect x="27" y="27" width="7" height="7" fill="#ffee58"/><rect x="0" y="36" width="7" height="7" fill="#ffee58"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="#ffee58"/></svg>
+        <span class="name">LIGHTS OUT</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Every click flips a plus shape. Switch all the lights off.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/lightsout.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #4dd0e1">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/fifteen.pdf#zoom=page-fit" data-pdf="games/fifteen.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#4dd0e1"/><rect x="9" y="0" width="7" height="7" fill="#4dd0e1"/><rect x="27" y="0" width="7" height="7" fill="#4dd0e1"/><rect x="36" y="0" width="7" height="7" fill="#4dd0e1"/><rect x="0" y="9" width="7" height="7" fill="#4dd0e1"/><rect x="9" y="9" width="7" height="7" fill="#4dd0e1"/><rect x="27" y="9" width="7" height="7" fill="#4dd0e1"/><rect x="36" y="9" width="7" height="7" fill="#4dd0e1"/><rect x="0" y="27" width="7" height="7" fill="#4dd0e1"/><rect x="9" y="27" width="7" height="7" fill="#4dd0e1"/><rect x="27" y="27" width="7" height="7" fill="var(--text)"/><rect x="36" y="27" width="7" height="7" fill="var(--text)"/><rect x="0" y="36" width="7" height="7" fill="#4dd0e1"/><rect x="9" y="36" width="7" height="7" fill="#4dd0e1"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">15 PUZZLE</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Slide the numbered tiles back into order.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/fifteen.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #f06292">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/mastermind.pdf#zoom=page-fit" data-pdf="games/mastermind.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#f06292"/><rect x="18" y="0" width="7" height="7" fill="#f06292"/><rect x="36" y="0" width="7" height="7" fill="#f06292"/><rect x="0" y="18" width="7" height="7" fill="var(--text)"/><rect x="18" y="18" width="7" height="7" fill="#f06292"/><rect x="36" y="18" width="7" height="7" fill="var(--text)"/><rect x="0" y="36" width="7" height="7" fill="#f06292"/><rect x="18" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="#f06292"/></svg>
+        <span class="name">CODEBREAKER</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Crack the secret 4-digit code in ten guesses.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/mastermind.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Word" style="--accent: #ffab91">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/hangman.pdf#zoom=page-fit" data-pdf="games/hangman.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#ffab91"/><rect x="9" y="0" width="7" height="7" fill="#ffab91"/><rect x="18" y="0" width="7" height="7" fill="#ffab91"/><rect x="27" y="0" width="7" height="7" fill="#ffab91"/><rect x="0" y="9" width="7" height="7" fill="#ffab91"/><rect x="27" y="9" width="7" height="7" fill="var(--text)"/><rect x="0" y="18" width="7" height="7" fill="#ffab91"/><rect x="18" y="18" width="7" height="7" fill="var(--text)"/><rect x="27" y="18" width="7" height="7" fill="var(--text)"/><rect x="36" y="18" width="7" height="7" fill="var(--text)"/><rect x="0" y="27" width="7" height="7" fill="#ffab91"/><rect x="27" y="27" width="7" height="7" fill="var(--text)"/><rect x="0" y="36" width="7" height="7" fill="#ffab91"/><rect x="9" y="36" width="7" height="7" fill="#ffab91"/><rect x="18" y="36" width="7" height="7" fill="#ffab91"/><rect x="27" y="36" width="7" height="7" fill="#ffab91"/></svg>
+        <span class="name">HANGMAN</span>
+        <span class="kind">Word</span>
+        <span class="blurb">Guess the word one letter at a time before you&#x27;re hanged.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/hangman.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Word" style="--accent: #81c784">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/wordle.pdf#zoom=page-fit" data-pdf="games/wordle.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="0" y="0" width="7" height="7" fill="#81c784"/><rect x="18" y="0" width="7" height="7" fill="var(--text)"/><rect x="36" y="0" width="7" height="7" fill="#81c784"/><rect x="0" y="18" width="7" height="7" fill="#81c784"/><rect x="18" y="18" width="7" height="7" fill="#81c784"/><rect x="36" y="18" width="7" height="7" fill="var(--text)"/><rect x="0" y="36" width="7" height="7" fill="#81c784"/><rect x="18" y="36" width="7" height="7" fill="#81c784"/><rect x="36" y="36" width="7" height="7" fill="#81c784"/></svg>
+        <span class="name">WORD GUESS</span>
+        <span class="kind">Word</span>
+        <span class="blurb">Find the hidden 5-letter word in six tries.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/wordle.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #69f0ae">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/life.pdf#zoom=page-fit" data-pdf="games/life.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="9" y="0" width="7" height="7" fill="#69f0ae"/><rect x="18" y="9" width="7" height="7" fill="#69f0ae"/><rect x="0" y="18" width="7" height="7" fill="#69f0ae"/><rect x="9" y="18" width="7" height="7" fill="#69f0ae"/><rect x="18" y="18" width="7" height="7" fill="#69f0ae"/><rect x="27" y="36" width="7" height="7" fill="var(--text)"/><rect x="36" y="36" width="7" height="7" fill="var(--text)"/></svg>
+        <span class="name">GAME OF LIFE</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Draw cells and watch Conway&#x27;s Game of Life evolve.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/life.pdf" download>PDF</a>
+    </li>
+    <li class="card" data-kind="Puzzle" style="--accent: #b388ff">
+      <a class="play" href="pdfjs/web/viewer.html?file=../../games/simon.pdf#zoom=page-fit" data-pdf="games/simon.pdf">
+        <svg class="icon" viewBox="0 0 43 43" aria-hidden="true"><rect x="18" y="0" width="7" height="7" fill="#b388ff"/><rect x="0" y="18" width="7" height="7" fill="var(--text)"/><rect x="36" y="18" width="7" height="7" fill="var(--text)"/><rect x="18" y="36" width="7" height="7" fill="#b388ff"/></svg>
+        <span class="name">COPYCAT</span>
+        <span class="kind">Puzzle</span>
+        <span class="blurb">Watch the pads light up, then repeat the growing pattern.</span>
+        <span class="go">PLAY &rarr;</span>
+      </a>
+      <a class="file" href="games/simon.pdf" download>PDF</a>
+    </li>
+  </ul>
+
+  <footer>
+    <p><strong>How does this work?</strong> Every game is a single PDF. The screen is a stack of form fields that the PDF's own JavaScript rewrites many times a second. Desktop Chrome and Edge run it in their built-in PDF viewer; on phones, Safari and Firefox it opens in a web PDF viewer instead.</p>
+  </footer>
+</div>
+<script>
+  // Desktop Chrome, Edge, Brave and Opera have a PDF viewer that runs the
+  // games, so link straight to the PDFs there. Everyone else keeps the
+  // pdf.js viewer links, which also work without this script.
+  (function () {
+    var ua = navigator.userAgentData;
+    var isChromium = !!(ua && ua.brands && ua.brands.some(function (b) { return b.brand === "Chromium"; }));
+    if (isChromium && ua.mobile === false) {
+      document.querySelectorAll("a.play").forEach(function (a) { a.href = a.getAttribute("data-pdf"); });
+    }
+
+    var buttons = document.querySelectorAll(".filters button");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var kind = button.getAttribute("data-kind");
+        buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === button)); });
+        document.querySelectorAll(".card").forEach(function (card) {
+          card.hidden = kind !== "All" && card.getAttribute("data-kind") !== kind;
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* PDF Snake: tweaks to the pdf.js viewer so the game looks the way it does in Chrome. */
+
+/* The game is drawn with text, so every field must use a monospace font,
+   where all characters (including spaces) are the same width. */
+.annotationLayer .textWidgetAnnotation :is(input, textarea) {
+  font-family: "Courier New", Courier, monospace !important;
+}
+
+/* The keyboard box is meant to be invisible: the label underneath shows the text. */
+.annotationLayer .textWidgetAnnotation input[name="kbd"] {
+  background: transparent !important;
+  color: transparent !important;
+  caret-color: transparent !important;
+  border: none !important;
+}

@@ -2,7 +2,7 @@
 
 21 playable games that live **inside PDF files**. No app, no install: open a PDF and play Snake, Tetris-style blocks, Minesweeper, Breakout and more.
 
-**Play online:** https://snake-pdf.vercel.app/
+**Play online:** https://pdf-minigames.vercel.app/
 
 ## How to play
 
